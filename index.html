@@ -4,157 +4,278 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>hiroteluknaga</title>
-    <link rel="stylesheet" href="styles.css">
-    <href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-      <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css" />
-   <script src="script.js" defer></script>
-    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css" />
+    <style>
+        /* Google Fonts - Poppins */
+        @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Poppins", sans-serif;
+        }
+
+        body {
+            background-color: #f8f8f8;
+            padding-top: 80px; /* Adjusted for navbar */
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* Navbar Styling */
+/* Existing styles */
+.nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px 30px;
+    background: #3e8e;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+}
+
+.nav .logo {
+    font-size: 20px;
+    font-weight: 600;
+    color: white;
+    text-transform: uppercase;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); /* 3D effect for logo */
+}
+
+.nav .nav-links {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.nav .nav-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    transition: all 0.3s;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2); /* 3D effect for links */
+}
+
+.nav .nav-links a:hover {
+    color: #f0f0f0;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Darker shadow on hover */
+}
+
+/* Hide the new link on mobile */
+.desktop-only {
+    display: none;
+}
+
+/* Media query for desktop and larger screens */
+@media (min-width: 768px) {
+    .desktop-only {
+        display: inline-block;
+    }
+}
+
+        /* Main Section */
+        .main-content {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            padding: 30px 10px;
+            flex: 1; /* Allow content to grow and push footer down */
+        }
+
+        .card {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            width: 100%;
+            max-width: 300px;
+            transition: 0.3s;
+            margin: 10px;
+        }
+
+        .card:hover {
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .card img {
+            border-radius: 10px 10px 0 0;
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .card .container {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .card .container h4 {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .card .container p {
+            font-size: 14px;
+            color: #555;
+        }
+
+        /* Responsive Design */
+        @media screen and (min-width: 768px) {
+            .main-content {
+                justify-content: space-between;
+            }
+            .card {
+                width: 30%; /* Three cards per row */
+            }
+        }
+
+        @media screen and (min-width: 1024px) {
+            .main-content {
+                justify-content: space-evenly;
+            }
+            .card {
+                width: 23%; /* Four cards per row on larger screens */
+            }
+        }
+
+        /* Marquee (Running Text) */
+        .marquee {
+            background-color: #3e8e; /* Yellow background */
+            padding: 5px 0;
+            box-shadow: black;
+            text-align: center;
+            color: black;
+            font-size: 18px;
+        }
+
+        /* Footer Styling */
+        footer {
+            background: #3e8e;
+            color: white;
+            padding: 20px;
+            margin-top: 5px;
+            text-align: center;
+        }
+
+        footer .logo-name {
+            font-size: 22px;
+            font-weight: 600;
+        }
+
+        footer .link-boxes {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 20px;
+        }
+
+        footer .link-boxes ul {
+            list-style: none;
+        }
+
+        footer .link-boxes a {
+            color: white;
+            text-decoration: none;
+            margin: 5px 0;
+        }
+
+        footer .bottom-details {
+            margin-top: 20px;
+            font-size: 12px;
+        }
+    </style>
 </head>
 <body>
-     
-     
-     <nav class="nav">
-      <i class="uil uil-bars navOpenBtn"></i>
-      <a href="#" class="logo">Siswa Hiro</a>
-      <ul class="nav-links">
-        <i class="uil uil-times navCloseBtn"></i>
+
+    <!-- Navbar -->
+<nav class="nav">
+    <a href="#" class="logo">MTS HIROO</a>
+    <ul class="nav-links">
         <li><a href="index.html">Home</a></li>
-        <li><a href="Info.html">Info Tekno</a></li>
-        <li><a href="contact">hubungi kami</a></li>
-        <li><a href="tentang.html">tentang</a></li>
-      </ul>
-      <i class="uil uil-search search-icon" id="searchIcon"></i>
-      <div class="search-box">
-        <i class="uil uil-search search-icon"></i>
-        <input type="text" placeholder="Search here..." />
-      </div>
-    </nav>
-   
+        <li><a href="Info.html">Info</a></li>
+        <li><a href="contact">Help</a></li>
+        <li><a href="tentang.html">Tentang</a></li>
+        <li class="desktop-only"><a href="newpage.html">New Page</a></li> <!-- New link -->
+    </ul>
+</nav>
 
-    </div>
-  </div>
-</section>
-   <div class="card">
-<iframe width="500" height="315"
-src="video.mp4">
-</iframe>
-</div>
-<div class="kedip" id="kedip">Welcome To website</div>
-  <script src="script.js"></script>
-    
-
-<div class="card">
-     <h4><b>Perayaan Hari Guru Class 8E 2023</b></h4>
-    <img src="card2.png" alt="Avatar" style="width:60%">
-  <div class="container">
-    <p>perayaan hari guru kelas 8E MTS HUDAYATURROHMAN pada tahun 2023.</p>
-  </div>
-</div>
-<div class="card">
-      <h4><b>Penerimaan Santriwati Hidayatturrohman</b></h4>
-      <img src="foto99.jpg" alt="Avatar" style="width:60%">
-  <div class="container">
-        <p>Penerimaan Santriwati Hidayaturrohman Tahun 2024, Kami memiliki beberapa mata pelajaran yaitu ; AL-QUR'AN, Praktik Sholat Wajib & Sunah, Kitab Kuning (Fiqih, Tauhid, Akhlak, Nahwu Shorof)</p>
-        </div>
-        </div>
-    
-<div class="card">
-      <img src="card.png" alt="Avatar" style="width:60%">
-  <div class="container">
-    <h4><b>Hiro Cup 2021</b></h4>
-    <p>Kejuaraan futsal di lingkungan internal SMA Hiro selain untuk meningkatkan mental bertanding yang sempat menurun akibat masa pandemi covid-19, juga diadakan untuk memperkenalkan nilai-nilai sportifitas kepada siswa SMA Hiro.Hiro Cup 2021 dengan konsep acara 1 hari diikuti oleh 16 tim yang berasal dari siswa SMA Hiro, imana setiap tim bebas mencari anggota dari kelas mana saja. Hal ini dilakukan untuk mengenalkan kebersamaan ke siswa, dan pada akhirnya diharapkan mampu mengenalkan nilai-nilai sportifitas kepada siswa SMA Hiro</p>
-  </div>
-</div>
-
-<div class="card">
-      <img src="foto2.png" alt="Avatar" style="width:50%">
-  <div class="container">
-    <h4><b>Masjid Hidayatrrohman</b></h4>
-    <p>Masjid Hidayaturrohman, masjid ini digunakan untuk ibadah berjama'ah para siswa siswi guru Hidayaturrohman.</p>
-  </div>
-  </div>
-  
-  <div class="card">
-        <img src="foto1.png" alt="Avatar" style="width:60%">
-  <div class="container">
-    <h4><b>GEDUNG 3 LANTAI HIDAYATURROHMAN</b></h4>
-    <p>Gedung 3 lantai yayasan hidayaturrohman, gedung ini digunakan untuk ruang belajar dari siswa siswi, mi, mts, sma,.</p>
-  </div>
-  </div>
-
-<div class="card-list">
-        <a href="https://www.instagram.com/aiimas_lailafarohah?igsh=MWZuamlpeGVuM201Mg==" class="card-item">
-            <img src="gambar1.png" alt="Card Image">
-            <span class="developer">Support</span>
-            <h3>ini adalah support saya, untuk mengerjakan website ini:(.</h3>
-            <div class="arrow">
-                <i class="fas fa-arrow-right card-icon"></i>
+    <!-- Cards Section -->
+    <div class="main-content">
+        <div class="card" onclick="window.location.href='404.html'">
+            <img src="card2.png" alt="Perayaan Hari Guru">
+            <div class="container">
+                <h4><b>Perayaan Hari Guru Class 8E 2023</b></h4>
+                <p>Perayaan hari guru kelas 8E MTS HUDAYATURROHMAN pada tahun 2023.</p>
             </div>
-        </a>
-        <a href="https://www.instagram.com/zannxtoya?igsh=MTJibjR2bG5mbTU0OA==" class="card-item">
-            <img src="gambar3.png" alt="Card Image">
-            <span class="editor">Developer</span>
-            <h3>Saya adalah pengembang website ini..</h3>
-            <div class="arrow">
-                <i class="fas fa-arrow-right card-icon"></i>
-            </div>
-        </a>
-    </div>
+        </div>
+        
 
-  <footer>
-    <div class="content">
-      <div class="top">
-        <div class="logo-details">
-          <i class="fab fa-slack"></i>
-          <span class="logo_name">Zann Project</span>
+        <div class="card" onclick="window.location.href='9.html'">
+            <img src="9.png" alt="Perayaan Hari Guru">
+            <div class="container">
+                <h4><b>Perayaan Hari Guru Class IX C</b></h4>
+                <p>Perayaan hari guru kelas IX C MTS HUDAYATURROHMAN pada tahun 2024, klik untuk baca.</p>
+            </div>
         </div>
 
-      </div>
-      <div class="link-boxes">
-        <ul class="box">
-          <li class="link_name">Company</li>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="profil.html">profil</a></li>
-          <li><a href="#">About us</a></li>
-          <li><a href="#">Get started</a></li>
-        </ul>
-        <ul class="box">
-          <li class="link_name">Thanks To</li>
-          <li><a href="#"Yayasan Hidayaturrohman</a></a></li>
-          <li><a href="#">pak syahdan</a></li>
-          <li><a href="#">pak Fauzi</a></li>
-          <li><a href="#">Team IT</a></li>
-        </ul>
-        <ul class="box">
-          <li class="link_name">Account</li>
-          <li><a href="#">Profile</a></li>
-          <li><a href="#">My account</a></li>
-          <li><a href="#">Prefrences</a></li>
-          <li><a href="#">Purchase</a></li>
-        </ul>
-        <ul class="box">
-          <li class="link_name">Courses</li>
-          <li><a href="#">HTML & CSS</a></li>
-          <li><a href="#">JavaScript</a></li>
-          <li><a href="#">Photography</a></li>
-          <li><a href="#">Photoshop</a></li>
-        </ul>
-      </div>
+        <div class="card" onclick="window.location.href='404.html'">
+            <img src="foto99.jpg" alt="Penerimaan Santriwati">
+            <div class="container">
+                <h4><b>Penerimaan Santriwati Hidayatturrohman</b></h4>
+                <p>Penerimaan Santriwati Hidayaturrohman Tahun 2024, Kami memiliki beberapa mata pelajaran.</p>
+            </div>
+        </div>
+
+        <div class="card" onclick="window.location.href='card.html'">
+            <img src="card.png" alt="Hiro Cup 2021">
+            <div class="container">
+                <h4><b>Hiro Cup 2021</b></h4>
+                <p>Kejuaraan futsal di SMA Hiro, meningkatkan mental bertanding dan nilai-nilai sportifitas.</p>
+            </div>
+        </div>
+
+        <div class="card" onclick="window.location.href='404.html'">
+            <img src="foto2.png" alt="Masjid Hidayaturrohman">
+            <div class="container">
+                <h4><b>Masjid Hidayaturrohman</b></h4>
+                <p>Masjid Hidayaturrohman digunakan untuk ibadah berjama'ah para siswa siswi.</p>
+            </div>
+        </div>
+
+        <div class="card" onclick="window.location.href='sma.html'">
+            <img src="sma.png" alt="Gedung 3 Lantai">
+            <div class="container">
+                <h4><b>SMA, SEKOLAH YANG MELOMPAT</b></h4>
+                <p>Sejak awal tahun pelajaran 2022/2023, SMA Hiro yang terletak di Kecamatan Teluknaga Kabupaten Tangerang bukan hanya berjalan maju tetapi melompat maju dengan prestasi akademik, klik untuk baca.</p>
+            </div>
+        </div>
     </div>
-    <div class="bottom-details">
-      <div class="bottom_text">
-        <span class="copyright_text">Copyright © 2021 <a href="#">ZannProject.</a>All rights reserved</span>
-        <span class="policy_terms">
-          <a href="#">Privacy policy</a>
-          <a href="#">Terms & condition</a>
-        </span>
-      </div>
+
+    <!-- Marquee (Running Text) -->
+    <div class="marquee">
+        <marquee behavior="scroll" direction="left">by support : yayasan hidayaturrohman, fauzan, class IX C IT, hiroteluknaga, vercel, github, niagahoster, zannmods thanks.</marquee>
     </div>
-  </footer>
+
+    <!-- Footer -->
+    <footer>
+        <div class="logo-name">FAUZAN IX_C</div>
+        <div class="link-boxes">
+
+<p>sumber data web : https://hiroteluknaga.ach.id</p>
+        </div>
+<div class="bottom-details">
+  <span>&copy; 2024 fauzan. All rights reserved.</span>
+        </div>
+    </foaoter>
 
 </body>
-</html>
-
-  
-    <script src="scripts.js"></script>
-</body></html>
+                                                                        </html>
