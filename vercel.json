@@ -1,3 +1,16 @@
 {
-  "cleanUrls": true
+  "rewrites": [
+    {
+      "source": "/home",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/9c_hari_guru_2024_",
+      "destination": "/9.html"
+    },
+    {
+      "source": "/contact",
+      "destination": "/contact.html"
+    }
+  ]
 }
