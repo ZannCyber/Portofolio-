@@ -1,15 +1,36 @@
-<p>not avaible error</p>
+// Script untuk mencoba membatasi penggunaan browser
+(function () {
+  // Cegah klik kanan
+  document.addEventListener('contextmenu', function (e) {
+    e.preventDefault();
+    alert("Maaf, fitur ini dinonaktifkan.");
+  });
 
-<script>
-  // Fungsi untuk menampilkan popup
-function showPopup() {
-  alert("Halaman belom dibuat,oleh developer .");
-  // Panggil lagi fungsi ini setelah pengguna menekan OK
-  showPopup();
-}
+  // Cegah pintasan keyboard (misalnya Ctrl+T, Ctrl+N, F12)
+  document.addEventListener('keydown', function (e) {
+    if (
+      e.ctrlKey || // Tombol Ctrl
+      e.key === 'F12' || // Developer Tools
+      e.key === 'Tab' || // Tab baru
+      e.key === 'N' || // Jendela baru
+      e.key === 'W' // Menutup tab
+    ) {
+      e.preventDefault();
+      alert("Akses dibatasi untuk keperluan perusahaan.");
+    }
+  });
 
-// Jalankan popup saat halaman dimuat
-window.onload = function () {
-  showPopup();
-};
-</script>
+  // Cegah navigasi ke halaman lain
+  window.addEventListener('beforeunload', function (e) {
+    e.preventDefault();
+    e.returnValue = ''; // Pesan default untuk mencegah keluar dari halaman
+  });
+
+  // Cegah klik pada elemen tertentu (opsional)
+  document.addEventListener('click', function (e) {
+    if (e.target.tagName === 'A') { // Jika pengguna mencoba membuka tautan
+      e.preventDefault();
+      alert("Anda tidak diizinkan meninggalkan halaman ini.");
+    }
+  });
+})();
