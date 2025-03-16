@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Popup Mengganggu</title>
+  <title>Halaman Terbatas</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -38,7 +38,6 @@
     // Fungsi untuk menampilkan popup berulang
     function showAnnoyingPopup() {
       alert("Jangan coba-coba keluar dari halaman ini!");
-      // Panggil lagi fungsi ini setelah popup ditutup
       setTimeout(showAnnoyingPopup, 10); // Delay 10ms
     }
 
@@ -57,11 +56,17 @@
     document.addEventListener('keydown', function (e) {
       if (
         e.ctrlKey || // Tombol Ctrl
+        e.altKey || // Tombol Alt
+        e.shiftKey || // Tombol Shift
+        e.metaKey || // Tombol Command (Mac)
         e.key === 'F12' || // Developer Tools
         e.key === 'Tab' || // Tab baru
         e.key === 'N' || // Jendela baru
         e.key === 'W' || // Menutup tab
-        e.key === 'Escape' // Keluar dari mode fullscreen
+        e.key === 'Escape' || // Keluar dari mode fullscreen
+        e.key === 'F4' || // Alt+F4 untuk menutup browser
+        e.key === 'F5' || // Refresh halaman
+        e.key === 'F6' // Navigasi address bar
       ) {
         e.preventDefault();
         alert("Akses dibatasi untuk keperluan perusahaan.");
@@ -73,6 +78,20 @@
       e.preventDefault();
       e.returnValue = ''; // Pesan default untuk mencegah keluar dari halaman
     });
+
+    // Cegah klik pada tautan eksternal
+    document.addEventListener('click', function (e) {
+      if (e.target.tagName === 'A') { // Jika pengguna mencoba membuka tautan
+        e.preventDefault();
+        alert("Anda tidak diizinkan meninggalkan halaman ini.");
+      }
+    });
+
+    // Cegah pengguna membuka tab baru dengan cara apapun
+    window.onblur = function () {
+      alert("Jangan tinggalkan halaman ini!");
+      window.focus(); // Kembalikan fokus ke halaman utama
+    };
   </script>
 </body>
 </html>
