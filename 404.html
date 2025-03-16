@@ -1,36 +1,74 @@
-<p>haii not found</p>// Script untuk mencoba membatasi penggunaan browser
-(function () {
-  // Cegah klik kanan
-  document.addEventListener('contextmenu', function (e) {
-    e.preventDefault();
-    alert("Maaf, fitur ini dinonaktifkan.");
-  });
-
-  // Cegah pintasan keyboard (misalnya Ctrl+T, Ctrl+N, F12)
-  document.addEventListener('keydown', function (e) {
-    if (
-      e.ctrlKey || // Tombol Ctrl
-      e.key === 'F12' || // Developer Tools
-      e.key === 'Tab' || // Tab baru
-      e.key === 'N' || // Jendela baru
-      e.key === 'W' // Menutup tab
-    ) {
-      e.preventDefault();
-      alert("Akses dibatasi untuk keperluan perusahaan.");
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Halaman Terbatas</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
     }
-  });
-
-  // Cegah navigasi ke halaman lain
-  window.addEventListener('beforeunload', function (e) {
-    e.preventDefault();
-    e.returnValue = ''; // Pesan default untuk mencegah keluar dari halaman
-  });
-
-  // Cegah klik pada elemen tertentu (opsional)
-  document.addEventListener('click', function (e) {
-    if (e.target.tagName === 'A') { // Jika pengguna mencoba membuka tautan
-      e.preventDefault();
-      alert("Anda tidak diizinkan meninggalkan halaman ini.");
+    .container {
+      margin-top: 20%;
+      padding: 20px;
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     }
-  });
-})();
+    h1 {
+      color: #e74c3c;
+    }
+    p {
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Halaman Terbatas</h1>
+    <p>Halaman ini hanya dapat digunakan untuk tujuan tertentu.</p>
+    <p>Mohon tidak mencoba mengakses fitur lain di browser ini.</p>
+  </div>
+
+  <script>
+    // Cegah klik kanan
+    document.addEventListener('contextmenu', function (e) {
+      e.preventDefault();
+      alert("Klik kanan dinonaktifkan.");
+    });
+
+    // Cegah pintasan keyboard (Ctrl+T, Ctrl+N, F12, dll.)
+    document.addEventListener('keydown', function (e) {
+      if (
+        e.ctrlKey || // Tombol Ctrl
+        e.key === 'F12' || // Developer Tools
+        e.key === 'Tab' || // Tab baru
+        e.key === 'N' || // Jendela baru
+        e.key === 'W' || // Menutup tab
+        e.key === 'Escape' // Keluar dari mode fullscreen
+      ) {
+        e.preventDefault();
+        alert("Akses dibatasi untuk keperluan perusahaan.");
+      }
+    });
+
+    // Cegah navigasi ke halaman lain
+    window.addEventListener('beforeunload', function (e) {
+      e.preventDefault();
+      e.returnValue = ''; // Pesan default untuk mencegah keluar dari halaman
+    });
+
+    // Cegah klik pada tautan eksternal
+    document.addEventListener('click', function (e) {
+      if (e.target.tagName === 'A') { // Jika pengguna mencoba membuka tautan
+        e.preventDefault();
+        alert("Anda tidak diizinkan meninggalkan halaman ini.");
+      }
+    });
+  </script>
+</body>
+</html>
