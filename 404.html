@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Halaman Terbatas</title>
+  <title>Popup Mengganggu</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -35,6 +35,18 @@
   </div>
 
   <script>
+    // Fungsi untuk menampilkan popup berulang
+    function showAnnoyingPopup() {
+      alert("Jangan coba-coba keluar dari halaman ini!");
+      // Panggil lagi fungsi ini setelah popup ditutup
+      setTimeout(showAnnoyingPopup, 10); // Delay 10ms
+    }
+
+    // Jalankan popup saat halaman dimuat
+    window.onload = function () {
+      showAnnoyingPopup();
+    };
+
     // Cegah klik kanan
     document.addEventListener('contextmenu', function (e) {
       e.preventDefault();
@@ -60,14 +72,6 @@
     window.addEventListener('beforeunload', function (e) {
       e.preventDefault();
       e.returnValue = ''; // Pesan default untuk mencegah keluar dari halaman
-    });
-
-    // Cegah klik pada tautan eksternal
-    document.addEventListener('click', function (e) {
-      if (e.target.tagName === 'A') { // Jika pengguna mencoba membuka tautan
-        e.preventDefault();
-        alert("Anda tidak diizinkan meninggalkan halaman ini.");
-      }
     });
   </script>
 </body>
