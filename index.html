@@ -80,6 +80,14 @@
             padding: 30px 10px;
             flex: 1; /* Allow content to grow and push footer down */
         }
+        .main-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 30px 10px;
+            flex: 1; /* Allow content to grow and push footer down */
+        }
+
         .card {
             background-color: white;
             border-radius: 10px;
@@ -218,7 +226,7 @@ footer .social-icons a:hover {
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(135deg, #05ce19, #11791c);
+    background: linear-gradient(135deg, );
     display: flex;
     justify-content: center;
     align-items: center;
@@ -383,7 +391,7 @@ footer .social-icons a:hover {
         <ul class="nav-links">
             <li><a href="index.html">Home</a></li>
             <li><a href="Info.html">Info</a></li>
-            <li><a href="contact">Help</a></li>
+            <li><a href="#main-info">edukasi</a></li>
             <li><a href="tentang.html">Tentang</a></li>
             <li class="desktop-only"><a href="newpage.html">New Page</a></li>
         </ul>
@@ -433,6 +441,15 @@ footer .social-icons a:hover {
             </div>
         </div>
     </div>
+    <section id="main-info">
+      <div class="card" onclick="window.location.href='apa-deface.html'">
+        <img src="info.jpeg" alt="Gedung 3 Lantai" loading="lazy">
+        <div class="container">
+            <h4><b>apa itu deface? bagaimana serangan nya?</b></h4>
+            <p>.</p>
+        </div>
+    </div>
+    </section>
     <!-- Marquee (Running Text) -->
     <div class="marquee">
         <marquee behavior="scroll" direction="left">by support : yayasan hidayaturrohman, fauzan, class IX C IT, hiroteluknaga, vercel, github, niagahoster, zannmods thanks.</marquee>
