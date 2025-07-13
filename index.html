@@ -5,9 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HIROTELUKNAGA</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap">
     <style>
         :root {
             /* Light Theme */
@@ -17,11 +16,11 @@
             --card-bg: #ffffff;
             --text-color: #1a1a1a;
             --accent-color: #34c759;
-            --shadow-color: rgba(0, 0, 0, 0.15);
-            --chatbot-bg: #f3f7f8;
+            --shadow-color: rgba(0, 0, 0, 0.1);
+            --chatbot-bg: #ffffff;
             --chatbot-header: #07ef05;
-            --chat-incoming: #e0e0e0;
-            --chat-outgoing: #3df901;
+            --chat-incoming: #e6e6e6;
+            --chat-outgoing: #34c759;
         }
 
         [data-theme="dark"] {
@@ -32,7 +31,7 @@
             --card-bg: #1e1e1e;
             --text-color: #e0e0e0;
             --accent-color: #4ade80;
-            --shadow-color: rgba(0, 0, 0, 0.5);
+            --shadow-color: rgba(0, 0, 0, 0.4);
             --chatbot-bg: #1e1e1e;
             --chatbot-header: #34c759;
             --chat-incoming: #333333;
@@ -44,12 +43,12 @@
             padding: 0;
             box-sizing: border-box;
             font-family: "Poppins", sans-serif;
-            transition: all 0.3s ease-in-out;
+            transition: all 0.3s ease;
         }
 
         body {
             background-color: var(--background-color);
-            padding-top: 80px;
+            padding-top: clamp(60px, 10vw, 70px);
             margin: 0;
             display: flex;
             flex-direction: column;
@@ -63,9 +62,9 @@
             top: 0;
             left: 0;
             width: 100%;
-            padding: 15px 40px;
+            padding: clamp(10px, 3vw, 12px) clamp(15px, 4vw, 20px);
             background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            box-shadow: 0 4px 20px var(--shadow-color);
+            box-shadow: 0 3px 10px var(--shadow-color);
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -73,27 +72,27 @@
         }
 
         .nav .logo {
-            font-size: 26px;
-            font-weight: 700;
+            font-size: clamp(18px, 5vw, 22px);
+            font-weight: 600;
             color: #fff;
             text-transform: uppercase;
-            letter-spacing: 1.5px;
-            animation: slideInLeft 0.6s ease-out;
+            letter-spacing: 0.5px;
+            animation: slideInLeft 0.5s ease-out;
         }
 
         .nav .nav-links {
             list-style: none;
             display: flex;
-            gap: 30px;
+            gap: clamp(10px, 3vw, 20px);
         }
 
         .nav .nav-links a {
             color: #fff;
             text-decoration: none;
-            font-size: 16px;
+            font-size: clamp(13px, 3vw, 14px);
             font-weight: 500;
             position: relative;
-            padding-bottom: 6px;
+            padding: 5px 0;
         }
 
         .nav .nav-links a::after {
@@ -104,7 +103,7 @@
             bottom: 0;
             left: 0;
             background-color: #fff;
-            transition: width 0.4s ease;
+            transition: width 0.3s ease;
         }
 
         .nav .nav-links a:hover::after {
@@ -115,13 +114,13 @@
             background: none;
             border: none;
             color: #fff;
-            font-size: 22px;
+            font-size: clamp(16px, 4vw, 18px);
             cursor: pointer;
-            transition: transform 0.4s ease;
+            transition: transform 0.3s ease;
         }
 
         .nav .theme-toggle:hover {
-            transform: rotate(180deg);
+            transform: scale(1.2);
         }
 
         .desktop-only {
@@ -137,106 +136,104 @@
         /* Main Content */
         .main-content, .main-info {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            padding: 50px 30px;
+            grid-template-columns: repeat(auto-fit, minmax(clamp(250px, 45vw, 280px), 1fr));
+            gap: clamp(15px, 4vw, 25px);
+            padding: clamp(20px, 5vw, 40px) clamp(10px, 3vw, 20px);
             flex: 1;
         }
 
         .card {
             background-color: var(--card-bg);
-            border-radius: 20px;
-            box-shadow: 0 8px 25px var(--shadow-color);
+            border-radius: 12px;
+            box-shadow: 0 4px 15px var(--shadow-color);
             cursor: pointer;
             overflow: hidden;
-            transition: transform 0.5s ease, box-shadow 0.5s ease;
-            animation: fadeInUp 0.6s ease-out forwards;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            animation: fadeInUp 0.5s ease-out forwards;
         }
 
         .card:hover {
-            transform: translateY(-20px) scale(1.03);
-            box-shadow: 0 15px 35px var(--shadow-color);
+            transform: translateY(-10px);
+            box-shadow: 0 8px 20px var(--shadow-color);
         }
 
         .card img {
             width: 100%;
-            height: 240px;
+            height: clamp(180px, 30vw, 200px);
             object-fit: cover;
-            border-radius: 20px 20px 0 0;
-            transition: transform 0.6s ease;
+            border-radius: 12px 12px 0 0;
+            transition: transform 0.4s ease;
         }
 
         .card:hover img {
-            transform: scale(1.1);
+            transform: scale(1.05);
         }
 
         .card .container {
-            padding: 25px;
+            padding: clamp(15px, 3vw, 20px);
             text-align: center;
         }
 
         .card .container h4 {
-            font-size: 22px;
+            font-size: clamp(16px, 4vw, 18px);
             font-weight: 600;
-            margin-bottom: 12px;
+            margin-bottom: 8px;
             color: var(--text-color);
         }
 
         .card .container p {
-            font-size: 15px;
+            font-size: clamp(12px, 3vw, 13px);
             color: var(--text-color);
-            opacity: 0.85;
-            line-height: 1.6;
+            opacity: 0.8;
+            line-height: 1.5;
         }
 
         /* Marquee */
         .marquee {
             background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            padding: 12px 0;
+            padding: clamp(8px, 2vw, 10px) 0;
             color: #fff;
-            font-size: 16px;
+            font-size: clamp(12px, 3vw, 14px);
             font-weight: 500;
             text-align: center;
-            box-shadow: 0 4px 15px var(--shadow-color);
+            box-shadow: 0 3px 8px var(--shadow-color);
         }
 
-        .marquee marquee {
-            animation: marquee 12s linear infinite;
+        . Hawkins {
+            animation: marquee 10s linear infinite;
         }
 
         /* Footer */
         footer {
             background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
             color: #fff;
-            padding: 60px 30px;
+            padding: clamp(30px, 6vw, 50px) clamp(15px, 4vw, 20px);
             text-align: center;
-            font-size: 15px;
-            line-height: 1.8;
-            position: relative;
-            overflow: hidden;
+            font-size: clamp(12px, 3vw, 14px);
+            line-height: 1.7;
         }
 
         footer .logo-name {
-            font-size: 32px;
-            font-weight: 700;
-            margin-bottom: 25px;
-            animation: glow 3s ease-in-out infinite;
+            font-size: clamp(20px, 5vw, 26px);
+            font-weight: 600;
+            margin-bottom: 20px;
+            animation: glow 2s ease-in-out infinite;
         }
 
         footer .link-boxes {
             display: flex;
             justify-content: center;
-            gap: 40px;
-            margin: 30px 0;
+            gap: clamp(15px, 4vw, 25px);
+            margin: 20px 0;
         }
 
         footer .link-boxes a {
             color: #fff;
             text-decoration: none;
-            font-size: 16px;
+            font-size: clamp(13px, 3vw, 14px);
             font-weight: 500;
             position: relative;
-            padding-bottom: 5px;
+            padding-bottom: 4px;
         }
 
         footer .link-boxes a::after {
@@ -247,7 +244,7 @@
             bottom: 0;
             left: 0;
             background-color: var(--accent-color);
-            transition: width 0.4s ease;
+            transition: width 0.3s ease;
         }
 
         footer .link-boxes a:hover::after {
@@ -255,19 +252,18 @@
         }
 
         footer .social-icons {
-            margin: 30px 0;
+            margin: 20px 0;
             display: flex;
             justify-content: center;
-            gap: 20px;
+            gap: clamp(10px, 3vw, 15px);
         }
 
         footer .social-icons a {
             color: #fff;
-            font-size: 24px;
-            transition: transform 0.4s ease, color 0.4s ease;
-            position: relative;
-            width: 50px;
-            height: 50px;
+            font-size: clamp(16px, 4vw, 18px);
+            transition: transform 0.3s ease, color 0.3s ease;
+            width: clamp(30px, 8vw, 35px);
+            height: clamp(30px, 8vw, 35px);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -276,45 +272,44 @@
         }
 
         footer .social-icons a:hover {
-            transform: translateY(-8px);
+            transform: translateY(-5px);
             color: var(--accent-color);
-            background: rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.15);
         }
 
         footer .bottom-details {
-            margin-top: 30px;
-            font-size: 14px;
+            margin-top: 15px;
+            font-size: clamp(11px, 2.5vw, 12px);
             opacity: 0.9;
-            animation: fadeIn 1s ease;
         }
 
         /* Chatbot */
         .chatbot__button {
             position: fixed;
-            bottom: 40px;
-            right: 40px;
-            width: 70px;
-            height: 70px;
+            bottom: clamp(15px, 4vw, 20px);
+            right: clamp(15px, 4vw, 20px);
+            width: clamp(45px, 10vw, 50px);
+            height: clamp(45px, 10vw, 50px);
             display: flex;
             justify-content: center;
             align-items: center;
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            background: var(--primary-color);
             color: #fff;
             border: none;
             border-radius: 50%;
             cursor: pointer;
-            box-shadow: 0 6px 20px var(--shadow-color);
-            transition: transform 0.4s ease, background 0.4s ease;
-            animation: float 3s ease-in-out infinite;
+            box-shadow: 0 3px 10px var(--shadow-color);
+            transition: all 0.3s ease;
+            animation: float 2.5s ease-in-out infinite;
         }
 
         .chatbot__button:hover {
-            transform: scale(1.2);
+            transform: scale(1.1);
             background: var(--accent-color);
         }
 
         .chatbot__button span {
-            font-size: 28px;
+            font-size: clamp(18px, 5vw, 20px);
         }
 
         .show-chatbot .chatbot__button span:first-child {
@@ -327,16 +322,18 @@
 
         .chatbot {
             position: fixed;
-            bottom: 120px;
-            right: 40px;
-            width: 420px;
+            bottom: clamp(70px, 15vw, 80px);
+            right: clamp(15px, 4vw, 20px);
+            width: clamp(260px, 80vw, 320px);
+            max-height: clamp(350px, 70vh, 450px);
             background: var(--chatbot-bg);
-            border-radius: 25px;
-            box-shadow: 0 10px 30px var(--shadow-color);
-            transform: translateY(100px) scale(0);
+            border-radius: 12px;
+            box-shadow: 0 5px 15px var(--shadow-color);
+            transform: translateY(30px) scale(0);
             opacity: 0;
             pointer-events: none;
-            transition: transform 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55), opacity 0.5s ease;
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
+            z-index: 1000;
         }
 
         .show-chatbot .chatbot {
@@ -346,79 +343,450 @@
         }
 
         .chatbot__header {
-            background: linear-gradient(135deg, var(--chatbot-header), var(--secondary-color));
-            padding: 18px;
+            background: var(--chatbot-header);
+            padding: clamp(10px, 2vw, 12px);
             text-align: center;
             position: relative;
-            border-radius: 25px 25px 0 0;
+            border-radius: 12px 12px 0 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
         .chatbot__header span {
-            position: absolute;
-            top: 50%;
-            right: 20px;
             color: #fff;
             cursor: pointer;
-            transform: translateY(-50%);
-            font-size: 26px;
+            font-size: clamp(18px, 4vw, 20px);
+            padding: 0 clamp(8px, 2vw, 10px);
+            transition: transform 0.3s ease;
+        }
+
+        .chatbot__header span:hover --
+
+System: I'm sorry, but the artifact content appears to be incomplete, as it cuts off in the middle of the CSS for the chatbot header span hover effect. I'll complete the artifact with the intended changes, ensuring a fully responsive, mobile-first design, a simplified chatbot with local storage for conversation continuity, a clear button to reset history, and a polished, professional look that avoids a "heavy" appearance. The chatbot will use the provided API (`https://zhpiss.vercel.app/api/chat?message=`) and maintain a cohesive green madrasah theme.
+
+<xaiArtifact artifact_id="99abada8-b6ce-4582-a9e8-87760df9b1a1" artifact_version_id="53055ad3-0ef6-4a50-920a-5fd5e1a26fca" title="index.html" contentType="text/html">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HIROTELUKNAGA</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap">
+    <style>
+        :root {
+            /* Light Theme */
+            --primary-color: #05ce19;
+            --secondary-color: #0d7518;
+            --background-color: #f9fafb;
+            --card-bg: #ffffff;
+            --text-color: #1a1a1a;
+            --accent-color: #34c759;
+            --shadow-color: rgba(0, 0, 0, 0.1);
+            --chatbot-bg: #ffffff;
+            --chatbot-header: #07ef05;
+            --chat-incoming: #e6e6e6;
+            --chat-outgoing: #34c759;
+        }
+
+        [data-theme="dark"] {
+            /* Dark Theme */
+            --primary-color: #34c759;
+            --secondary-color: #1a3c22;
+            --background-color: #181818;
+            --card-bg: #222222;
+            --text-color: #e0e0e0;
+            --accent-color: #4ade80;
+            --shadow-color: rgba(0, 0, 0, 0.4);
+            --chatbot-bg: #222222;
+            --chatbot-header: #34c759;
+            --chat-incoming: #333333;
+            --chat-outgoing: #4ade80;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Poppins", sans-serif;
+            transition: all 0.3s ease;
+        }
+
+        body {
+            background-color: var(--background-color);
+            padding-top: clamp(60px, 10vw, 70px);
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            color: var(--text-color);
+        }
+
+        /* Navbar Styling */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: clamp(10px, 3vw, 12px) clamp(15px, 4vw, 20px);
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            box-shadow: 0 3px 10px var(--shadow-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .nav .logo {
+            font-size: clamp(18px, 5vw, 22px);
+            font-weight: 600;
+            color: #fff;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            animation: slideInLeft 0.5s ease-out;
+        }
+
+        .nav .nav-links {
+            list-style: none;
+            display: flex;
+            gap: clamp(10px, 3vw, 20px);
+        }
+
+        .nav .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            font-size: clamp(13px, 3vw, 14px);
+            font-weight: 500;
+            position: relative;
+            padding: 5px 0;
+        }
+
+        .nav .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: #fff;
+            transition: width 0.3s ease;
+        }
+
+        .nav .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav .theme-toggle {
+            background: none;
+            border: none;
+            color: #fff;
+            font-size: clamp(16px, 4vw, 18px);
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .nav .theme-toggle:hover {
+            transform: scale(1.2);
+        }
+
+        .desktop-only {
+            display: none;
+        }
+
+        @media (min-width: 768px) {
+            .desktop-only {
+                display: inline-block;
+            }
+        }
+
+        /* Main Content */
+        .main-content, .main-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(clamp(250px, 45vw, 280px), 1fr));
+            gap: clamp(15px, 4vw, 25px);
+            padding: clamp(20px, 5vw, 40px) clamp(10px, 3vw, 20px);
+            flex: 1;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            box-shadow: 0 4px 15px var(--shadow-color);
+            cursor: pointer;
+            overflow: hidden;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            animation: fadeInUp 0.5s ease-out forwards;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 20px var(--shadow-color);
+        }
+
+        .card img {
+            width: 100%;
+            height: clamp(180px, 30vw, 200px);
+            object-fit: cover;
+            border-radius: 12px 12px 0 0;
+            transition: transform 0.4s ease;
+        }
+
+        .card:hover img {
+            transform: scale(1.05);
+        }
+
+        .card .container {
+            padding: clamp(15px, 3vw, 20px);
+            text-align: center;
+        }
+
+        .card .container h4 {
+            font-size: clamp(16px, 4vw, 18px);
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: var(--text-color);
+        }
+
+        .card .container p {
+            font-size: clamp(12px, 3vw, 13px);
+            color: var(--text-color);
+            opacity: 0.8;
+            line-height: 1.5;
+        }
+
+        /* Marquee */
+        .marquee {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            padding: clamp(8px, 2vw, 10px) 0;
+            color: #fff;
+            font-size: clamp(12px, 3vw, 14px);
+            font-weight: 500;
+            text-align: center;
+            box-shadow: 0 3px 8px var(--shadow-color);
+        }
+
+        .marquee marquee {
+            animation: marquee 10s linear infinite;
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: #fff;
+            padding: clamp(30px, 6vw, 40px) clamp(15px, 4vw, 20px);
+            text-align: center;
+            font-size: clamp(12px, 3vw, 14px);
+            line-height: 1.7;
+        }
+
+        footer .logo-name {
+            font-size: clamp(20px, 5vw, 24px);
+            font-weight: 600;
+            margin-bottom: 15px;
+            animation: glow 2s ease-in-out infinite;
+        }
+
+        footer .link-boxes {
+            display: flex;
+            justify-content: center;
+            gap: clamp(15px, 4vw, 20px);
+            margin: 15px 0;
+        }
+
+        footer .link-boxes a {
+            color: #fff;
+            text-decoration: none;
+            font-size: clamp(13px, 3vw, 14px);
+            font-weight: 500;
+            position: relative;
+            padding-bottom: 4px;
+        }
+
+        footer .link-boxes a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--accent-color);
+            transition: width 0.3s ease;
+        }
+
+        footer .link-boxes a:hover::after {
+            width: 100%;
+        }
+
+        footer .social-icons {
+            margin: 15px 0;
+            display: flex;
+            justify-content: center;
+            gap: clamp(10px, 3vw, 15px);
+        }
+
+        footer .social-icons a {
+            color: #fff;
+            font-size: clamp(16px, 4vw, 18px);
+            transition: transform 0.3s ease, color 0.3s ease;
+            width: clamp(30px, 8vw, 35px);
+            height: clamp(30px, 8vw, 35px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+        }
+
+        footer .social-icons a:hover {
+            transform: translateY(-5px);
+            color: var(--accent-color);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        footer .bottom-details {
+            margin-top: 15px;
+            font-size: clamp(11px, 2.5vw, 12px);
+            opacity: 0.9;
+        }
+
+        /* Chatbot */
+        .chatbot__button {
+            position: fixed;
+            bottom: clamp(15px, 4vw, 20px);
+            right: clamp(15px, 4vw, 20px);
+            width: clamp(40px, 9vw, 45px);
+            height: clamp(40px, 9vw, 45px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: var(--primary-color);
+            color: #fff;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 3px 10px var(--shadow-color);
+            transition: all 0.3s ease;
+            animation: float 2.5s ease-in-out infinite;
+            z-index: 1001;
+        }
+
+        .chatbot__button:hover {
+            transform: scale(1.1);
+            background: var(--accent-color);
+        }
+
+        .chatbot__button span {
+            font-size: clamp(18px, 5vw, 20px);
+        }
+
+        .show-chatbot .chatbot__button span:first-child {
+            display: none;
+        }
+
+        .show-chatbot .chatbot__button span:last-child {
+            display: block;
+        }
+
+        .chatbot {
+            position: fixed;
+            bottom: clamp(65px, 12vw, 75px);
+            right: clamp(15px, 4vw, 20px);
+            width: clamp(250px, 85vw, 300px);
+            max-height: clamp(300px, 65vh, 400px);
+            background: var(--chatbot-bg);
+            border-radius: 10px;
+            box-shadow: 0 5px 15px var(--shadow-color);
+            transform: translateY(20px) scale(0);
+            opacity: 0;
+            pointer-events: none;
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
+            z-index: 1000;
+        }
+
+        .show-chatbot .chatbot {
+            opacity: 1;
+            pointer-events: auto;
+            transform: translateY(0) scale(1);
+        }
+
+        .chatbot__header {
+            background: var(--chatbot-header);
+            padding: clamp(8px, 2vw, 10px) clamp(12px, 3vw, 15px);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-radius: 10px 10px 0 0;
+        }
+
+        .chatbot__header span {
+            color: #fff;
+            cursor: pointer;
+            font-size: clamp(18px, 4vw, 20px);
             transition: transform 0.3s ease;
         }
 
         .chatbot__header span:hover {
-            transform: translateY(-50%) rotate(90deg);
+            transform: scale(1.2);
+        }
+
+        .chatbot__header .clear-chat {
+            font-size: clamp(16px, 4vw, 18px);
         }
 
         .chatbox__title {
-            font-size: 1.6rem;
+            font-size: clamp(14px, 4vw, 16px);
             color: #fff;
-            font-weight: 600;
-            letter-spacing: 0.5px;
+            font-weight: 500;
+            flex-grow: 1;
+            text-align: center;
         }
 
         .chatbot__box {
-            height: 460px;
+            max-height: clamp(250px, 50vh, 320px);
             overflow-y: auto;
-            padding: 25px;
+            padding: clamp(10px, 3vw, 15px);
             scrollbar-width: thin;
             scrollbar-color: var(--primary-color) var(--chatbot-bg);
         }
 
         .chatbot__chat {
             display: flex;
-            margin: 15px 0;
+            margin: 8px 0;
             animation: slideInChat 0.3s ease;
         }
 
         .chatbot__chat p {
-            max-width: 75%;
-            font-size: 0.95rem;
-            padding: 12px 18px;
-            border-radius: 15px;
+            max-width: 80%;
+            font-size: clamp(12px, 3vw, 13px);
+            padding: clamp(8px, 2vw, 10px) clamp(12px, 3vw, 14px);
+            border-radius: 8px;
             color: var(--text-color);
-            line-height: 1.5;
+            line-height: 1.4;
         }
 
         .incoming p {
             background: var(--chat-incoming);
-            border-radius: 15px 15px 15px 0;
+            border-radius: 8px 8px 8px 0;
         }
 
         .outgoing p {
             background: var(--chat-outgoing);
-            border-radius: 15px 15px 0 15px;
+            border-radius: 8px 8px 0 8px;
             margin-left: auto;
         }
 
         .incoming span {
-            width: 40px;
-            height: 40px;
-            line-height: 40px;
+            width: clamp(24px, 6vw, 28px);
+            height: clamp(24px, 6vw, 28px);
+            line-height: clamp(24px, 6vw, 28px);
             color: #fff;
             background: var(--primary-color);
             border-radius: 50%;
             text-align: center;
-            margin: 0 12px 8px 0;
-            font-size: 20px;
+            margin: 0 clamp(6px, 2vw, 8px) 4px 0;
+            font-size: clamp(14px, 4vw, 16px);
         }
 
         .chatbot__input-box {
@@ -426,26 +794,26 @@
             bottom: 0;
             width: 100%;
             display: flex;
-            gap: 10px;
+            gap: clamp(5px, 2vw, 8px);
             align-items: center;
             background: var(--chatbot-bg);
-            padding: 12px 25px;
+            padding: clamp(8px, 2vw, 10px) clamp(12px, 3vw, 15px);
             border-top: 1px solid var(--primary-color);
-            border-radius: 0 0 25px 25px;
+            border-radius: 0 0 10px 10px;
         }
 
         .chatbot__textarea {
             width: 100%;
-            min-height: 50px;
-            max-height: 160px;
-            font-size: 0.95rem;
-            padding: 12px;
+            min-height: clamp(35px, 8vw, 40px);
+            max-height: clamp(80px, 15vw, 100px);
+            font-size: clamp(12px, 3vw, 13px);
+            padding: clamp(6px, 2vw, 8px);
             color: var(--text-color);
             background: transparent;
             border: none;
             outline: none;
             resize: none;
-            border-radius: 10px;
+            border-radius: 6px;
         }
 
         .chatbot__textarea::placeholder {
@@ -454,7 +822,7 @@
         }
 
         .chatbot__input-box span {
-            font-size: 1.6rem;
+            font-size: clamp(16px, 4vw, 18px);
             color: var(--primary-color);
             cursor: pointer;
             visibility: hidden;
@@ -482,7 +850,7 @@
             align-items: center;
             z-index: 9999;
             opacity: 1;
-            transition: opacity 0.6s ease;
+            transition: opacity 0.5s ease;
         }
 
         .loading-screen.hidden {
@@ -491,12 +859,12 @@
         }
 
         .loading-spinner {
-            border: 8px solid rgba(255, 255, 255, 0.3);
-            border-top: 8px solid #ffffff;
+            border: 5px solid rgba(255, 255, 255, 0.3);
+            border-top: 5px solid #ffffff;
             border-radius: 50%;
-            width: 70px;
-            height: 70px;
-            animation: spin 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+            width: clamp(40px, 10vw, 50px);
+            height: clamp(40px, 10vw, 50px);
+            animation: spin 1s ease-in-out infinite;
         }
 
         /* Animations */
@@ -516,14 +884,14 @@
         }
 
         @keyframes glow {
-            0% { text-shadow: 0 0 5px rgba(255, 255, 255, 0.5); }
-            50% { text-shadow: 0 0 20px rgba(255, 255, 255, 0.8); }
-            100% { text-shadow: 0 0 5px rgba(255, 255, 255, 0.5); }
+            0% { text-shadow: 0 0 4px rgba(255, 255, 255, 0.4); }
+            50% { text-shadow: 0 0 12px rgba(255, 255, 255, 0.7); }
+            100% { text-shadow: 0 0 4px rgba(255, 255, 255, 0.4); }
         }
 
         @keyframes float {
             0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-12px); }
+            50% { transform: translateY(-6px); }
         }
 
         @keyframes slideInChat {
@@ -531,25 +899,37 @@
             to { transform: translateY(0); opacity: 1; }
         }
 
-        @media (max-width: 490px) {
+        @media (max-width: 480px) {
             .chatbot {
                 right: 0;
                 bottom: 0;
                 width: 100%;
                 height: 100%;
+                max-height: 100%;
                 border-radius: 0;
             }
             .chatbot__box {
-                height: 80%;
+                max-height: calc(100% - 90px);
             }
             .chatbot__header span {
                 display: block;
             }
             .nav {
-                padding: 15px 20px;
+                padding: 8px 10px;
             }
             .main-content, .main-info {
-                padding: 30px 15px;
+                padding: 15px 10px;
+            }
+            .card img {
+                height: clamp(160px, 40vw, 180px);
+            }
+        }
+
+        @media (min-width: 481px) and (max-width: 767px) {
+            .chatbot {
+                width: clamp(260px, 90vw, 300px);
+                bottom: clamp(65px, 12vw, 75px);
+                right: clamp(10px, 3vw, 15px);
             }
         }
     </style>
@@ -635,20 +1015,18 @@
     <!-- Chatbot -->
     <div class="chatbot">
         <div class="chatbot__header">
-            <h3 class="chatbox__title">HIRO AI</h3>
+            <span class="material-symbols-outlined clear-chat">delete</span>
+            <h3 class="chatbox__title">Hiro AI</h3>
             <span class="material-symbols-outlined">close</span>
         </div>
         <ul class="chatbot__box">
             <li class="chatbot__chat incoming">
                 <span class="material-symbols-outlined">smart_toy</span>
-                <p>Hi, welcome to Hiro AI, created by MTS Hiro students. How can we assist you? 😄✨</p>
-            </li>
-            <li class="chatbot__chat outgoing">
-                <p>...</p>
+                <p>Halo, selamat datang di Hiro AI! Bagaimana kami bisa membantu Anda hari ini? 😊</p>
             </li>
         </ul>
         <div class="chatbot__input-box">
-            <textarea class="chatbot__textarea" placeholder="Ketik pesan Anda..." required></textarea>
+            <textarea class="chatbot__textarea" placeholder="Ketik pesan..." required></textarea>
             <span id="send-btn" class="material-symbols-outlined">send</span>
         </div>
     </div>
@@ -674,15 +1052,16 @@
             <a href="https://youtube.com" target="_blank"><i class="fab fa-youtube"></i></a>
         </div>
         <div class="bottom-details">
-            <span>© 2024 Fauzan & Yayasan Hidayaturrohman. All rights reserved.</span>
+            <span>© 2025 Fauzan & Yayasan Hidayaturrohman. All rights reserved.</span>
         </div>
     </footer>
     <script>
         const chatbotToggle = document.querySelector('.chatbot__button');
-        const sendChatBtn = document.querySelector('.chatbot__input-box span');
+        const sendChatBtn = document.querySelector('#send-btn');
         const chatInput = document.querySelector('.chatbot__textarea');
         const chatBox = document.querySelector('.chatbot__box');
-        const chatbotCloseBtn = document.querySelector('.chatbot__header span');
+        const chatbotCloseBtn = document.querySelector('.chatbot__header span:not(.clear-chat)');
+        const clearChatBtn = document.querySelector('.clear-chat');
         const themeToggle = document.querySelector('#themeToggle');
         let userMessage;
         const inputInitHeight = chatInput.scrollHeight;
@@ -712,21 +1091,47 @@
             return chatLi;
         };
 
+        const loadChatHistory = () => {
+            const history = JSON.parse(localStorage.getItem('chatHistory') || '[]');
+            history.forEach(({ message, className }) => {
+                chatBox.appendChild(createChatLi(message, className));
+            });
+            chatBox.scrollTo(0, chatBox.scrollHeight);
+        };
+
+        const saveChatMessage = (message, className) => {
+            const history = JSON.parse(localStorage.getItem('chatHistory') || '[]');
+            history.push({ message, className });
+            localStorage.setItem('chatHistory', JSON.stringify(history));
+        };
+
+        const clearChatHistory = () => {
+            localStorage.removeItem('chatHistory');
+            chatBox.innerHTML = '';
+            chatBox.appendChild(createChatLi('Halo, selamat datang di Hiro AI! Bagaimana kami bisa membantu Anda hari ini? 😊', 'incoming'));
+            chatBox.scrollTo(0, chatBox.scrollHeight);
+        };
+
         const generateResponse = (incomingChatLi) => {
-            const API_URL = `https://zhpiss.vercel.app/api/chat?message=${encodeURIComponent(userMessage)}`;
+            const history = JSON.parse(localStorage.getItem('chatHistory') || '[]');
+            const context = history.map(item => item.message).join('\n');
+            const API_URL = `https://zhpiss.vercel.app/api/chat?message=${encodeURIComponent(userMessage + '\nContext: ' + context)}`;
             const messageElement = incomingChatLi.querySelector('p');
             fetch(API_URL)
                 .then((res) => res.json())
                 .then((data) => {
                     if (data.status === 'success') {
                         messageElement.textContent = data.data;
+                        saveChatMessage(data.data, 'incoming');
                     } else {
-                        messageElement.textContent = 'Oops! Ada kesalahan di API.';
+                        messageElement.textContent = 'Maaf, ada masalah dengan API.';
+                        saveChatMessage('Maaf, ada masalah dengan API.', 'incoming');
                     }
                 })
                 .catch((error) => {
                     messageElement.classList.add('error');
-                    messageElement.textContent = 'Oops! Silakan coba lagi!';
+                    messageElement.textContent = 'Oops! Coba lagi nanti!';
+                    saveChatMessage('Oops! Coba lagi nanti!', 'incoming');
                     console.error(error);
                 })
                 .finally(() => chatBox.scrollTo(0, chatBox.scrollHeight));
@@ -738,9 +1143,10 @@
             chatInput.value = '';
             chatInput.style.height = `${inputInitHeight}px`;
             chatBox.appendChild(createChatLi(userMessage, 'outgoing'));
+            saveChatMessage(userMessage, 'outgoing');
             chatBox.scrollTo(0, chatBox.scrollHeight);
             setTimeout(() => {
-                const incomingChatLi = createChatLi('Thinking...', 'incoming');
+                const incomingChatLi = createChatLi('Memikirkan...', 'incoming');
                 chatBox.appendChild(incomingChatLi);
                 chatBox.scrollTo(0, chatBox.scrollHeight);
                 generateResponse(incomingChatLi);
@@ -753,7 +1159,7 @@
         });
 
         chatInput.addEventListener('keydown', (e) => {
-            if (e.key === 'Enter' && !e.shiftKey && window.innerWidth > 800) {
+            if (e.key === 'Enter' && !e.shiftKey) {
                 e.preventDefault();
                 handleChat();
             }
@@ -769,12 +1175,17 @@
 
         sendChatBtn.addEventListener('click', handleChat);
 
+        clearChatBtn.addEventListener('click', clearChatHistory);
+
+        // Load Chat History
+        document.addEventListener('DOMContentLoaded', loadChatHistory);
+
         // Loading Screen
-        document.addEventListener("DOMContentLoaded", () => {
-            const loadingScreen = document.querySelector(".loading-screen");
+        document.addEventListener('DOMContentLoaded', () => {
+            const loadingScreen = document.querySelector('.loading-screen');
             setTimeout(() => {
                 loadingScreen.classList.add('hidden');
-            }, 1000);
+            }, 800);
         });
     </script>
 </body>
