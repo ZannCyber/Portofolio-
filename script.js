@@ -113,15 +113,14 @@ document.querySelectorAll('.artikel-card').forEach(el => {
   observer.observe(el);
 });
  
-      // Inisialisasi peta
-        var map = L.map('map').setView([-6.0465973, 106.6644815], 15); // Koordinat SMA HIRO Tanjung Pasir
+     document.addEventListener("DOMContentLoaded", function () {
+  var map = L.map('map').setView([-6.0465973, 106.6644815], 15);
 
-        // Tambahkan tile layer dari OpenStreetMap
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        }).addTo(map);
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+  }).addTo(map);
 
-        // Tambahkan marker
-        L.marker([-6.0465973, 106.6644815]).addTo(map)
-            .bindPopup('SMA HIRO Tanjung Pasir')
-            .openPopup();
+  L.marker([-6.0465973, 106.6644815]).addTo(map)
+    .bindPopup('SMA HIRO Tanjung Pasir')
+    .openPopup();
+});
